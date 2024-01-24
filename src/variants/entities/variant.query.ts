@@ -1,11 +1,11 @@
-import { Injectable, Search } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { InternalServerErrorException } from "@nestjs/common";
-import { Like } from "typeorm";
+import { Injectable, Search } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { InternalServerErrorException } from '@nestjs/common';
+import { Like } from 'typeorm';
 
-import { SearchDto } from "src/users/dto/search.dto";
-import { Variant } from "./variant.entity";
+import { SearchDto } from 'src/users/dto/search.dto';
+import { Variant } from './variant.entity';
 
 @Injectable()
 export class VaraintQuery {

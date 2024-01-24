@@ -6,8 +6,8 @@ import { UserHasAddress } from './entities/user-has-address.entity';
 import { UserHasAddressQuery } from './entities/userHasAddress.query';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([UserHasAddress])],
+  imports: [TypeOrmModule.forFeature([UserHasAddress])],
   controllers: [UserHasAddressController],
-  providers: [UserHasAddressService,UserHasAddressQuery],
+  providers: [UserHasAddressService, UserHasAddressQuery],
 })
 export class UserHasAddressModule {}

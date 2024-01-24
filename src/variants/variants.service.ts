@@ -4,11 +4,10 @@ import { CreateVariantDto } from './dto/create-variant.dto';
 import { SearchDto } from 'src/users/dto/search.dto';
 import { UpdateVariantDto } from './dto/update-variant.dto';
 
-
 @Injectable()
 export class VariantsService {
   constructor(private readonly variantQuery: VaraintQuery) {}
-  create(createVariantDto:CreateVariantDto) {
+  create(createVariantDto: CreateVariantDto) {
     return this.variantQuery.upsert(createVariantDto);
   }
 
@@ -20,7 +19,7 @@ export class VariantsService {
     return this.variantQuery.findOne({ id: id });
   }
 
-  update(id: number, updateVariantDto:UpdateVariantDto) {
+  update(id: number, updateVariantDto: UpdateVariantDto) {
     return this.variantQuery.upsert({ id: id, ...updateVariantDto });
   }
 

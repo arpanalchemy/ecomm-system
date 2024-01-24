@@ -6,8 +6,8 @@ import { UserHasPaymnetOptionsQuery } from './entities/userHasPaymentOptions.que
 import { UserHasPaymentOption } from './entities/user-has-payment-option.entity';
 
 @Module({
-  imports:[TypeOrmModule.forFeature(([UserHasPaymentOption]))],
+  imports: [TypeOrmModule.forFeature([UserHasPaymentOption])],
   controllers: [UserHasPaymentOptionsController],
-  providers: [UserHasPaymentOptionsService,UserHasPaymnetOptionsQuery],
+  providers: [UserHasPaymentOptionsService, UserHasPaymnetOptionsQuery],
 })
 export class UserHasPaymentOptionsModule {}

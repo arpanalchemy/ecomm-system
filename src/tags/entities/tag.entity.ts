@@ -1,3 +1,4 @@
+import { ProductHasTags } from 'src/product-has-tags/entities/product-has-tag.entity';
 import { Product } from 'src/products/entities/product.entity';
 import {
   Column,
@@ -7,15 +8,17 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   ManyToMany,
+  OneToMany,
 } from 'typeorm';
 
-@Entity({name:"tags"})
+@Entity({ name: 'tags' })
 export class Tag {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   name: string;
+
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
@@ -34,6 +37,10 @@ export class Tag {
   @DeleteDateColumn({ type: 'timestamp', nullable: true })
   deletedAt: Date;
 
-  @ManyToMany(() => Product, (product) => product.tags)
+  @ManyToMany(() => Product, (product) => product.tagss)
   products: Product[];
+
+  @OneToMany(() => ProductHasTags, (productHasTags) => productHasTags.tag)
+  productHasTags: ProductHasTags[];
+
 }

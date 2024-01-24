@@ -6,6 +6,8 @@ import {
   DeleteDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -16,16 +18,16 @@ export class Variant {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   productId: number;
 
-  @Column()
+  @Column({ nullable: false })
   itemPrice: number;
 
-  @Column()
+  @Column({ nullable: false })
   currency: string;
 
-  @Column()
+  @Column({ nullable: false })
   SKU: number;
 
   @CreateDateColumn({
@@ -46,7 +48,7 @@ export class Variant {
   @DeleteDateColumn({ type: 'timestamp', nullable: true })
   deletedAt: Date;
 
-  @OneToOne(() => Product, (product) => product.variant)
+  @ManyToOne(() => Product, (product) => product.variants)
   @JoinColumn({ name: 'productId' })
   product: Product;
 }

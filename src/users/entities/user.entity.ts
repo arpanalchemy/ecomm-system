@@ -3,12 +3,7 @@ import { Order } from 'src/order/entities/order.entity';
 import { Product } from 'src/products/entities/product.entity';
 import { UserHasAddress } from 'src/user-has-address/entities/user-has-address.entity';
 import { UserHasPaymentOption } from 'src/user-has-payment-options/entities/user-has-payment-option.entity';
-import {
-  Column,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from 'typeorm';
 @Entity({ name: 'users' })
@@ -16,19 +11,19 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   name: string;
 
-  @Column()
+  @Column({ nullable: false })
   email: string;
 
-  @Column()
+  @Column({ nullable: false })
   dateOfBirth: Date;
 
-  @Column()
+  @Column({ nullable: false })
   mobileNo: string;
 
-  @Column()
+  @Column({ nullable: false })
   password: string;
 
   @CreateDateColumn({

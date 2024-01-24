@@ -4,12 +4,10 @@ import { CreateSocialDto } from './dto/create-social.dto';
 import { SearchDto } from 'src/users/dto/search.dto';
 import { UpdateSocialDto } from './dto/update-social.dto';
 
-
-
 @Injectable()
 export class SocialsService {
   constructor(private readonly socialQuery: SocialQuery) {}
-  create(CreateSocialDto:CreateSocialDto) {
+  create(CreateSocialDto: CreateSocialDto) {
     return this.socialQuery.upsert(CreateSocialDto);
   }
 
@@ -21,7 +19,7 @@ export class SocialsService {
     return this.socialQuery.findOne({ id: id });
   }
 
-  update(id: number,UpdateSocialDto:UpdateSocialDto) {
+  update(id: number, UpdateSocialDto: UpdateSocialDto) {
     return this.socialQuery.upsert({ id: id, ...UpdateSocialDto });
   }
 

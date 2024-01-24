@@ -1,10 +1,10 @@
-import { Injectable, Search } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { InternalServerErrorException } from "@nestjs/common";
-import { Like } from "typeorm";
-import { UserHasPaymentOption } from "./user-has-payment-option.entity";
-import { SearchDto } from "src/users/dto/search.dto";
+import { Injectable, Search } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { InternalServerErrorException } from '@nestjs/common';
+import { Like } from 'typeorm';
+import { UserHasPaymentOption } from './user-has-payment-option.entity';
+import { SearchDto } from 'src/users/dto/search.dto';
 
 @Injectable()
 export class UserHasPaymnetOptionsQuery {
@@ -13,7 +13,10 @@ export class UserHasPaymnetOptionsQuery {
     private readonly UserHasPaymentOptionsRepo: Repository<UserHasPaymentOption>,
   ) {}
 
-  public find(where: SearchDto, relations = []): Promise<UserHasPaymentOption[]> {
+  public find(
+    where: SearchDto,
+    relations = [],
+  ): Promise<UserHasPaymentOption[]> {
     try {
       const search = Object.keys(where).reduce((acc, key) => {
         acc[key] = Like(`%${where[key]}%`);

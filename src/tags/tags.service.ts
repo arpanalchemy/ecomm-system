@@ -4,7 +4,6 @@ import { CreateColorDto } from 'src/colors/dto/create-color.dto';
 import { SearchDto } from 'src/users/dto/search.dto';
 import { UpdateColorDto } from 'src/colors/dto/update-color.dto';
 
-
 @Injectable()
 export class TagsService {
   constructor(private readonly tagQuery: TagQuery) {}

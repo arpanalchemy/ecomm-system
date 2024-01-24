@@ -12,19 +12,19 @@ export class UserHasPaymentOption {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   userId: number;
 
-  @Column()
+  @Column({ nullable: false })
   cardNumber: string;
 
-  @Column()
+  @Column({ nullable: false })
   cardHolderName: string;
 
-  @Column()
+  @Column({ nullable: false })
   expiryDate: Date;
 
-  @Column()
+  @Column({ nullable: false })
   cvv: number;
 
   @CreateDateColumn({

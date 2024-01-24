@@ -25,10 +25,9 @@ export class OrderController {
     return this.orderService.create(createOrderDto);
   }
 
-
   @ApiOperation({ summary: 'Find All Orders' })
   @Get()
-  findAll(@Query() SearchDto:SearchDto) {
+  findAll(@Query() SearchDto: SearchDto) {
     return this.orderService.findAll(SearchDto);
   }
 

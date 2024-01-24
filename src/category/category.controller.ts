@@ -27,7 +27,7 @@ export class CategoryController {
 
   @ApiOperation({ summary: 'Find All Category' })
   @Get()
-  findAll(@Query() SearchDto:SearchDto) {
+  findAll(@Query() SearchDto: SearchDto) {
     return this.categoryService.findAll(SearchDto);
   }
 

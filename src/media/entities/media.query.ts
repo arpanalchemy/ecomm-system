@@ -1,12 +1,11 @@
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import {
   Injectable,
   InternalServerErrorException,
   NotFoundException,
-} from "@nestjs/common";
-import { Media } from "./media.entity";
-
+} from '@nestjs/common';
+import { Media } from './media.entity';
 
 @Injectable()
 export class MediaQuery {

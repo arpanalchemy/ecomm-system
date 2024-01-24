@@ -1,10 +1,10 @@
-import { Injectable, Search } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { InternalServerErrorException } from "@nestjs/common";
-import { Like } from "typeorm";
-import { Tag } from "./tag.entity";
-import { SearchDto } from "src/users/dto/search.dto";
+import { Injectable, Search } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { InternalServerErrorException } from '@nestjs/common';
+import { Like } from 'typeorm';
+import { Tag } from './tag.entity';
+import { SearchDto } from 'src/users/dto/search.dto';
 
 @Injectable()
 export class TagQuery {

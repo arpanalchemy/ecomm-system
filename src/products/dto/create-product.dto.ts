@@ -1,36 +1,50 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsInt, IsString } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import {
+  IsArray,
+  IsInt,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class CreateProductDto {
-    @ApiProperty()
-    @IsInt()
-    userId: number
+  @ApiProperty()
+  @IsString()
+  createdBy: string;
 
-    @ApiProperty()
-    @IsInt()
-    categoryId: number
+  @ApiProperty()
+  @IsString()
+  categoryId: string;
 
-    @ApiProperty()
-    @IsString()
-    name: string
+  @ApiProperty()
+  // @IsArray()
+  @IsOptional()
+  tags: string[];
 
-    @ApiProperty()
-    @IsInt()
-    weight: number
+  @ApiProperty()
+  @IsString()
+  name: string;
 
-    @ApiProperty()
-    @IsString()
-    collection: string
+  @ApiProperty()
+  // @IsInt()
+  @IsString()
+  weight: string;
 
-    @ApiProperty()
-    @IsString()
-    description: string
+  @ApiProperty()
+  @IsString()
+  collection: string;
 
-    @ApiProperty()
-    @IsInt()
-    quantity: number
+  @ApiProperty()
+  @IsString()
+  description: string;
 
-    @ApiProperty()
-    @IsInt()
-    price: number
+  @ApiProperty()
+  // @IsInt()
+  @IsString()
+  quantity: string;
+
+  @ApiProperty()
+  @IsString()
+  // @IsNumber({}, { each: true })
+  price: string;
 }

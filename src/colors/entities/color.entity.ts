@@ -14,7 +14,7 @@ export class Color {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({nullable:false})
+  @Column({ nullable: false })
   name: string;
 
   @CreateDateColumn({

@@ -14,16 +14,14 @@ import { OrderDetailsService } from './order-details.service';
 import { CreateOrderDetailDto } from './dto/create-order-detail.dto';
 import { UpdateOrderDetailDto } from './dto/update-order-detail.dto';
 
-
 @ApiTags('Order Details')
 @Controller('order-details')
 export class OrderDetailsController {
   constructor(private readonly orderDetailsService: OrderDetailsService) {}
 
-
   @Post()
   @ApiOperation({ summary: 'Create a new Order-Detail' })
-  create(@Body() CreateOrderDetailDto:CreateOrderDetailDto) {
+  create(@Body() CreateOrderDetailDto: CreateOrderDetailDto) {
     return this.orderDetailsService.create(CreateOrderDetailDto);
   }
 
@@ -41,7 +39,10 @@ export class OrderDetailsController {
 
   @Patch(':id')
   @ApiOperation({ summary: 'Update Order Detail By Id' })
-  update(@Param('id') id: string, @Body() UpdateOrderDetailDto:UpdateOrderDetailDto) {
+  update(
+    @Param('id') id: string,
+    @Body() UpdateOrderDetailDto: UpdateOrderDetailDto,
+  ) {
     return this.orderDetailsService.update(+id, UpdateOrderDetailDto);
   }
 

@@ -6,8 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Color } from './entities/color.entity';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Color])],
+  imports: [TypeOrmModule.forFeature([Color])],
   controllers: [ColorsController],
-  providers: [ColorService,ColorQuery],
+  providers: [ColorService, ColorQuery],
 })
 export class ColorsModule {}

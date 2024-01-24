@@ -17,22 +17,22 @@ export class Order {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   userId: number;
 
-  @Column()
+  @Column({ nullable: false })
   date: Date;
 
-  @Column()
+  @Column({ nullable: false })
   status: string;
 
-  @Column()
+  @Column({ nullable: false })
   totalQuantity: number;
 
-  @Column()
+  @Column({ nullable: false })
   paidAmount: number;
 
-  @Column()
+  @Column({ nullable: false })
   netAmount: number;
 
   @CreateDateColumn({

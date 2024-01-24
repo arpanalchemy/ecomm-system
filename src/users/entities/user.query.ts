@@ -10,7 +10,6 @@ import { Like } from 'typeorm';
 import { SearchDto } from '../dto/search.dto';
 import * as bcrypt from 'bcrypt';
 
-
 @Injectable()
 export class UserQuery {
   constructor(
@@ -52,18 +51,18 @@ export class UserQuery {
       throw new InternalServerErrorException();
     }
   }
-//   public findByEmail(where, relations = []): Promise<User[]> {
-//     try {
-//       return this.userRepository.find({
-//         where: where,
-//         relations: relations,
-//       });
-//     } catch (error) {
-//       console.log(error);
-//       if (error?.response?.statusCode !== 500) throw error;
-//       throw new InternalServerErrorException();
-//     }
-//   }
+  //   public findByEmail(where, relations = []): Promise<User[]> {
+  //     try {
+  //       return this.userRepository.find({
+  //         where: where,
+  //         relations: relations,
+  //       });
+  //     } catch (error) {
+  //       console.log(error);
+  //       if (error?.response?.statusCode !== 500) throw error;
+  //       throw new InternalServerErrorException();
+  //     }
+  //   }
   // public async upsert(body): Promise<User> {
   //   try {
   //     let object = null;
@@ -83,28 +82,28 @@ export class UserQuery {
 
   public async upsert(body): Promise<User> {
     try {
-        let object = null;
-        if (body.id) {
-            object = await this.findOne({ id: body.id });
-        } else {
-            object = new User();
-        }
+      let object = null;
+      if (body.id) {
+        object = await this.findOne({ id: body.id });
+      } else {
+        object = new User();
+      }
 
-        // Check if the body has a password field
-        if (body.password) {
-            // Hash the password before saving
-            const hashedPassword = await bcrypt.hash(body.password, 10);
-            body.password = hashedPassword;
-        }
+      // Check if the body has a password field
+      if (body.password) {
+        // Hash the password before saving
+        const hashedPassword = await bcrypt.hash(body.password, 10);
+        body.password = hashedPassword;
+      }
 
-        object = Object.assign(object, body);
-        return await this.userRepository.save(object);
+      object = Object.assign(object, body);
+      return await this.userRepository.save(object);
     } catch (error) {
-        console.log(error);
-        if (error?.response?.statusCode !== 500) throw error;
-        throw new InternalServerErrorException();
+      console.log(error);
+      if (error?.response?.statusCode !== 500) throw error;
+      throw new InternalServerErrorException();
     }
-}
+  }
 
   public async remove(id: number): Promise<User> {
     try {

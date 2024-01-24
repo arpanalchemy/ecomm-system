@@ -27,7 +27,7 @@ export class ColorsController {
 
   @ApiOperation({ summary: 'Find All Colors' })
   @Get()
-  findAll(@Query() searchDto:SearchDto) {
+  findAll(@Query() searchDto: SearchDto) {
     return this.colorsService.findAll(searchDto);
   }
 

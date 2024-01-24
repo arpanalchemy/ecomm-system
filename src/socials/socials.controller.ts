@@ -21,7 +21,7 @@ export class SocialsController {
 
   @ApiOperation({ summary: 'Create a new social' })
   @Post()
-  create(@Body() CreateSocialDto:CreateSocialDto) {
+  create(@Body() CreateSocialDto: CreateSocialDto) {
     return this.socialsService.create(CreateSocialDto);
   }
 
@@ -39,7 +39,7 @@ export class SocialsController {
 
   @ApiOperation({ summary: 'Update social by id' })
   @Patch(':id')
-  update(@Param('id') id: string, @Body() UpdateSocialDto:UpdateSocialDto) {
+  update(@Param('id') id: string, @Body() UpdateSocialDto: UpdateSocialDto) {
     return this.socialsService.update(+id, UpdateSocialDto);
   }
 

@@ -1,11 +1,11 @@
-import { Injectable, Search } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { InternalServerErrorException } from "@nestjs/common";
-import { Like } from "typeorm";
+import { Injectable, Search } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { InternalServerErrorException } from '@nestjs/common';
+import { Like } from 'typeorm';
 
-import { SearchDto } from "src/users/dto/search.dto";
-import { OrderDetail } from "./order-detail.entity";
+import { SearchDto } from 'src/users/dto/search.dto';
+import { OrderDetail } from './order-detail.entity';
 
 @Injectable()
 export class OrderDetailsQuery {

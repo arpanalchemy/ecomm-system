@@ -1,7 +1,7 @@
-import { Injectable } from "@nestjs/common";
-import { UpdateMediaDto } from "./dto/update-media.dto";
-import { CreateMediaDto } from "./dto/create-media.dto";
-import { MediaQuery } from "./entities/media.query";
+import { Injectable } from '@nestjs/common';
+import { UpdateMediaDto } from './dto/update-media.dto';
+import { CreateMediaDto } from './dto/create-media.dto';
+import { MediaQuery } from './entities/media.query';
 
 @Injectable()
 export class MediaService {

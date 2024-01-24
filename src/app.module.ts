@@ -18,6 +18,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseProvider } from 'databse.provider';
 
 // import { AuthModule } from './auth/auth.module';
+import { ProductHasTagsModule } from './product-has-tags/product-has-tags.module';
+
 
 @Module({
   imports: [
@@ -40,6 +42,7 @@ import { DatabaseProvider } from 'databse.provider';
     OrderDetailsModule,
     SocialsModule,
     VariantsModule,
+    ProductHasTagsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

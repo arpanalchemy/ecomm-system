@@ -6,8 +6,8 @@ import { Media } from './entities/media.entity';
 import { MediaQuery } from './entities/media.query';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Media])],
+  imports: [TypeOrmModule.forFeature([Media])],
   controllers: [MediaController],
-  providers: [MediaService,MediaQuery],
+  providers: [MediaService, MediaQuery],
 })
 export class MediaModule {}

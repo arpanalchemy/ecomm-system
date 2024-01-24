@@ -6,8 +6,8 @@ import { Social } from './entities/social.entity';
 import { SocialQuery } from './entities/social.query';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Social])],
+  imports: [TypeOrmModule.forFeature([Social])],
   controllers: [SocialsController],
-  providers: [SocialsService,SocialQuery],
+  providers: [SocialsService, SocialQuery],
 })
 export class SocialsModule {}

@@ -15,13 +15,13 @@ export class Social {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   productId: number;
 
-  @Column()
+  @Column({ nullable: false })
   key: string;
 
-  @Column()
+  @Column({ nullable: false })
   value: string;
 
   @CreateDateColumn({

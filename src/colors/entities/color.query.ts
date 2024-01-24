@@ -53,7 +53,7 @@ export class ColorQuery {
   }
   public async upsert(body): Promise<Color> {
     try {
-        console.log("Body>>>>>>>>>>>>>>>>>>>>>>>",body)
+      console.log('Body>>>>>>>>>>>>>>>>>>>>>>>', body);
       let object = null;
       if (body.id) {
         object = await this.findOne({ id: body.id });
@@ -61,7 +61,7 @@ export class ColorQuery {
         object = new Color();
       }
       object = Object.assign(object, body);
-      console.log(object)
+      console.log(object);
       return await this.colorRepository.save(object);
     } catch (error) {
       console.log(error);

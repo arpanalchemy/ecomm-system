@@ -13,23 +13,26 @@ export class UserHasAddress {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   userId: number;
 
-  @Column()
+  @Column({ nullable: false })
   address: string;
 
-  @Column()
+  @Column({ nullable: false })
   city: string;
 
-  @Column()
+  @Column({ nullable: false })
   state: string;
 
-  @Column()
+  @Column({ nullable: false })
   country: string;
 
-  @Column()
+  @Column({ nullable: false })
   postalCode: number;
+
+  @Column({ nullable: true })
+  isDefault: boolean;
 
   @CreateDateColumn({
     type: 'timestamp',

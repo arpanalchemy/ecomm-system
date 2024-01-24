@@ -1,32 +1,31 @@
 import { PartialType } from '@nestjs/swagger';
 import { CreateVariantDto } from './create-variant.dto';
-import { ApiProperty } from "@nestjs/swagger";
-import { IsEnum, IsInt, IsString } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEnum, IsInt, IsString } from 'class-validator';
 
 enum Currency {
-    USD = 'USD',
-    INR = 'INR',
-    GBP = 'GBP',
-    EUR = 'EUR',
-    CNY = 'CNY',
-    BTC = 'BTC',
-  }
+  USD = 'USD',
+  INR = 'INR',
+  GBP = 'GBP',
+  EUR = 'EUR',
+  CNY = 'CNY',
+  BTC = 'BTC',
+}
 
 export class UpdateVariantDto extends PartialType(CreateVariantDto) {
-    @ApiProperty()
-    @IsInt()
-    productId: number;
+  @ApiProperty()
+  @IsInt()
+  productId: number;
 
-    @ApiProperty()
-    @IsInt()
-    itemPrice: number;
+  @ApiProperty()
+  @IsInt()
+  itemPrice: number;
 
-    @ApiProperty()
-    @IsEnum(Currency)
-    currency: Currency;
+  @ApiProperty()
+  @IsEnum(Currency)
+  currency: Currency;
 
-    @ApiProperty()
-    @IsInt()
-    SKU: number;
-
+  @ApiProperty()
+  @IsInt()
+  SKU: number;
 }

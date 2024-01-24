@@ -54,7 +54,7 @@ export class CategoryQuery {
   }
   public async upsert(body): Promise<Category> {
     try {
-        console.log("Body>>>>>>>>>>>>>>>>>>>>>>>",body)
+      console.log('Body>>>>>>>>>>>>>>>>>>>>>>>', body);
       let object = null;
       if (body.id) {
         object = await this.findOne({ id: body.id });
@@ -69,5 +69,4 @@ export class CategoryQuery {
       throw new InternalServerErrorException();
     }
   }
-
 }

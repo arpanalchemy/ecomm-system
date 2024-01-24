@@ -6,7 +6,6 @@ import { UpdateColorDto } from 'src/colors/dto/update-color.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { CreateOrderDto } from './dto/create-order.dto';
 
-
 @Injectable()
 export class OrderService {
   constructor(private readonly orderQuery: OrderQuery) {}

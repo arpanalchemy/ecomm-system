@@ -1,3 +1,4 @@
+
 import { Product } from 'src/products/entities/product.entity';
 import {
   Column,
@@ -5,6 +6,7 @@ import {
   DeleteDateColumn,
   Entity,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -14,16 +16,16 @@ export class Media {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false })
   name: string;
 
-  @Column()
+  @Column({ nullable: false })
   path: string;
 
-  @Column()
+  @Column({ nullable: false })
   size: number;
 
-  @Column()
+  @Column({ nullable: false })
   mimeType: string;
 
   @CreateDateColumn({
@@ -46,4 +48,7 @@ export class Media {
 
   @ManyToMany(() => Product, (product) => product.media)
   products: Product[];
+
+  // @OneToMany(() => ProductsHasMedia, (productsHasMedia) => productsHasMedia.media)
+  // productsHasMedia: ProductsHasMedia[];
 }

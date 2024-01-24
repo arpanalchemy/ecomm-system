@@ -2,6 +2,7 @@ import { Category } from 'src/category/entities/category.entity';
 import { Color } from 'src/colors/entities/color.entity';
 import { Media } from 'src/media/entities/media.entity';
 import { OrderDetail } from 'src/order-details/entities/order-detail.entity';
+import { ProductHasTags } from 'src/product-has-tags/entities/product-has-tag.entity';
 import { Social } from 'src/socials/entities/social.entity';
 import { Tag } from 'src/tags/entities/tag.entity';
 import { User } from 'src/users/entities/user.entity';
@@ -26,32 +27,35 @@ export class Product {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  userId: number;
+  @Column({ nullable: false })
+  createdBy: number;
 
-  @Column()
+  @Column({ nullable: false })
   categoryId: number;
 
-  @Column()
+  @Column({ nullable: false })
   name: string;
 
-  @Column()
+  @Column({ nullable: false })
   weight: number;
 
-  @Column()
+  @Column({ nullable: false })
   collection: string;
 
-  @Column()
+  @Column({ nullable: false })
   description: string;
 
-  @Column()
+  @Column({ nullable: false })
   quantity: number;
 
-  @Column()
+  @Column({ nullable: false, type: 'float' })
   price: number;
 
-  @Column()
+  @Column({ nullable: false })
   size: number;
+
+  @Column({ type: 'text', nullable: true, array: true })
+  tags: string[];
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -77,15 +81,15 @@ export class Product {
   @OneToMany(() => Social, (social) => social.product)
   socials: Social[];
 
-  @OneToOne(() => Variant, (variant) => variant.product)
-  variant: Variant;
+  @OneToMany(() => Variant, (variant) => variant.product)
+  variants: Variant;
 
   @ManyToOne(() => Category, (category) => category.products)
   @JoinColumn({ name: 'categoryId' })
   category: Category;
 
   @ManyToOne(() => User, (user) => user.products)
-  @JoinColumn({ name: 'userId' })
+  @JoinColumn({ name: 'createdBy' })
   user: User;
 
   @ManyToMany(() => Tag, (tag) => tag.products)
@@ -94,7 +98,7 @@ export class Product {
     joinColumn: { name: 'productId', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'tagId', referencedColumnName: 'id' },
   })
-  tags: Tag[];
+  tagss: Tag[];
 
   @ManyToMany(() => Color, (color) => color.products)
   @JoinTable({
@@ -111,4 +115,7 @@ export class Product {
     inverseJoinColumn: { name: 'mediaId', referencedColumnName: 'id' },
   })
   media: Media[];
+
+  @OneToMany(() => ProductHasTags, (productHasTags) => productHasTags.product)
+  productHasTags: ProductHasTags[];
 }

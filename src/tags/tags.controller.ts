@@ -27,7 +27,7 @@ export class TagsController {
 
   @ApiOperation({ summary: 'Find All Tags' })
   @Get()
-  findAll(@Query() SearchDto:SearchDto) {
+  findAll(@Query() SearchDto: SearchDto) {
     return this.tagsService.findAll(SearchDto);
   }
 
