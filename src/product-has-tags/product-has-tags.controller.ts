@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
 import { ProductHasTagsService } from './product-has-tags.service';
 import { CreateProductHasTagDto } from './dto/create-product-has-tag.dto';
 import { UpdateProductHasTagDto } from './dto/update-product-has-tag.dto';
@@ -24,12 +33,15 @@ export class ProductHasTagsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductHasTagDto: UpdateProductHasTagDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateProductHasTagDto: UpdateProductHasTagDto,
+  ) {
     return this.productHasTagsService.update(+id, updateProductHasTagDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.productHasTagsService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.productHasTagsService.remove(+id);
+  // }
 }

@@ -22,6 +22,11 @@ export class CreateProductDto {
   tags: string[];
 
   @ApiProperty()
+  // @IsArray()
+  @IsOptional()
+  media: string[];
+
+  @ApiProperty()
   @IsString()
   name: string;
 
@@ -42,6 +47,10 @@ export class CreateProductDto {
   // @IsInt()
   @IsString()
   quantity: string;
+
+  @ApiProperty()
+  @IsString()
+  size: string;
 
   @ApiProperty()
   @IsString()

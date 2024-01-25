@@ -7,7 +7,7 @@ import { UpdateProductHasTagDto } from './dto/update-product-has-tag.dto';
 @Injectable()
 export class ProductHasTagsService {
   constructor(private readonly productHasTags: ProductHasTagsQuery) {}
-  create(createProductHasTagDto:CreateProductHasTagDto) {
+  create(createProductHasTagDto: CreateProductHasTagDto) {
     return this.productHasTags.upsert(createProductHasTagDto);
   }
 
@@ -19,11 +19,11 @@ export class ProductHasTagsService {
     return this.productHasTags.findOne({ id: id });
   }
 
-  update(id: number, updateProductHasTagDto:UpdateProductHasTagDto) {
+  update(id: number, updateProductHasTagDto: UpdateProductHasTagDto) {
     return this.productHasTags.upsert({ id: id, ...updateProductHasTagDto });
   }
 
-  remove(id: number) {
-    return this.productHasTags.remove(id);
-  }
+  // remove(id: number) {
+  //   return this.productHasTags.remove(id);
+  // }
 }

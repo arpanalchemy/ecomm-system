@@ -1,4 +1,4 @@
-
+import { ProductHasMedia } from 'src/product-has-media/entities/product-has-media.entity';
 import { Product } from 'src/products/entities/product.entity';
 import {
   Column,
@@ -46,9 +46,9 @@ export class Media {
   @DeleteDateColumn({ type: 'timestamp', nullable: true })
   deletedAt: Date;
 
-  @ManyToMany(() => Product, (product) => product.media)
+  @ManyToMany(() => Product, (product) => product.medias)
   products: Product[];
 
-  // @OneToMany(() => ProductsHasMedia, (productsHasMedia) => productsHasMedia.media)
-  // productsHasMedia: ProductsHasMedia[];
+  @OneToMany(() => ProductHasMedia, (productHasMedia) => productHasMedia.media)
+  productHasMedia: ProductHasMedia[];
 }

@@ -2,6 +2,7 @@ import { Category } from 'src/category/entities/category.entity';
 import { Color } from 'src/colors/entities/color.entity';
 import { Media } from 'src/media/entities/media.entity';
 import { OrderDetail } from 'src/order-details/entities/order-detail.entity';
+import { ProductHasMedia } from 'src/product-has-media/entities/product-has-media.entity';
 import { ProductHasTags } from 'src/product-has-tags/entities/product-has-tag.entity';
 import { Social } from 'src/socials/entities/social.entity';
 import { Tag } from 'src/tags/entities/tag.entity';
@@ -56,6 +57,9 @@ export class Product {
 
   @Column({ type: 'text', nullable: true, array: true })
   tags: string[];
+
+  @Column({ type: 'text', nullable: true, array: true })
+  media: string[];
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -114,8 +118,14 @@ export class Product {
     joinColumn: { name: 'productId', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'mediaId', referencedColumnName: 'id' },
   })
-  media: Media[];
+  medias: Media[];
 
   @OneToMany(() => ProductHasTags, (productHasTags) => productHasTags.product)
   productHasTags: ProductHasTags[];
+
+  @OneToMany(
+    () => ProductHasMedia,
+    (productHasMedia) => productHasMedia.product,
+  )
+  productHasMedia: ProductHasMedia[];
 }

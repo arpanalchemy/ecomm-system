@@ -1,9 +1,9 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { CreateProductHasTagDto } from './create-product-has-tag.dto';
+import { CreateProductHasMediaDto } from './create-product-has-media.dto';
 import { IsInt } from 'class-validator';
 
-export class UpdateProductHasTagDto extends PartialType(
-  CreateProductHasTagDto,
+export class UpdateProductHasMediaDto extends PartialType(
+  CreateProductHasMediaDto,
 ) {
   @ApiProperty()
   @IsInt()
@@ -11,5 +11,5 @@ export class UpdateProductHasTagDto extends PartialType(
 
   @ApiProperty()
   @IsInt()
-  tagId: number;
+  mediaId: number;
 }

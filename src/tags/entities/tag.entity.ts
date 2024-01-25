@@ -42,5 +42,4 @@ export class Tag {
 
   @OneToMany(() => ProductHasTags, (productHasTags) => productHasTags.tag)
   productHasTags: ProductHasTags[];
-
 }

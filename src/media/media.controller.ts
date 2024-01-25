@@ -19,6 +19,8 @@ import { MediaService } from './media.service';
 import { CreateMediaDto } from './dto/create-media.dto';
 import { UpdateMediaDto } from './dto/update-media.dto';
 import { Multer } from 'multer';
+import * as fs from 'fs';
+import * as path from 'path';
 
 @ApiTags('Media')
 @Controller('media')
@@ -65,14 +67,43 @@ export class MediaController {
     )
     file: Express.Multer.File,
   ) {
-    console.log('file>>>>>>>>>>>', file);
-    // const { originalname, filename, mimetype, size, destination } = file;
-    // const createMediaDto: CreateMediaDto = {
-    //   name: originalname,
-    //   path: destination,
-    //   mimeType: mimetype,
-    //   size: size,
-    // };
-    // return this.mediaService.create(createMediaDto);
+    console.log(file);
+    const uploadFolder = path.join(__dirname, '..', 'upload');
+    if (!fs.existsSync(uploadFolder)) {
+      fs.mkdirSync(uploadFolder);
+    }
+
+    const filePath = path.join(uploadFolder, file.originalname);
+    fs.writeFileSync(filePath, file.buffer);
+
+    console.log('File uploaded successfully:', filePath);
+
+    const { originalname, filename, mimetype, size, destination } = file;
+    const createMediaDto: CreateMediaDto = {
+      name: originalname,
+      path: 'dist/src/upload',
+      mimeType: mimetype,
+      size: size,
+    };
+    return this.mediaService.create(createMediaDto);
   }
+  // }
+  // uploadFile(
+  //   @UploadedFile(
+  //     new ParseFilePipe({
+  //       validators: [new FileTypeValidator({ fileType: "image/jpeg" })],
+  //     }),
+  //   )
+  //   file: Express.Multer.File,
+  // ) {
+  //   console.log("Herrreeeee>>>>>>",file)
+  //   const { originalname, filename, mimetype, size, destination } = file;
+  //   const createMediaDto:CreateMediaDto = {
+  //     name: originalname,
+  //     path: destination,
+  //     mimeType: mimetype,
+  //     size: size,
+  //   };
+  //   return this.mediaService.create(createMediaDto);
+  // }
 }

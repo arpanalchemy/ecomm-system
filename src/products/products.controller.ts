@@ -16,7 +16,6 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SearchDto } from 'src/users/dto/search.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
 
 @ApiTags('Product')
 @Controller('products')
@@ -26,8 +25,11 @@ export class ProductsController {
   @Post()
   @ApiOperation({ summary: 'Create Product' })
   @UseInterceptors(FileInterceptor('file'))
-  create(@Body() CreateProductDto:CreateProductDto, @UploadedFile() file: Express.Multer.File) {
-    console.log("here>>>",CreateProductDto)
+  create(
+    @Body() CreateProductDto: CreateProductDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    console.log('here>>>', CreateProductDto);
     return this.productsService.create(CreateProductDto);
   }
 

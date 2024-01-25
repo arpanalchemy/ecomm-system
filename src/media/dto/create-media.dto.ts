@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsString } from 'class-validator';
+import { IsInt, IsOptional, IsString } from 'class-validator';
 
 export class CreateMediaDto {
   @ApiProperty()
@@ -8,6 +8,7 @@ export class CreateMediaDto {
 
   @ApiProperty()
   @IsString()
+  @IsOptional()
   path: string;
 
   @ApiProperty()

@@ -5,16 +5,16 @@ import { InternalServerErrorException } from '@nestjs/common';
 import { Like } from 'typeorm';
 import { Product } from 'src/products/entities/product.entity';
 import { SearchDto } from 'src/users/dto/search.dto';
-import { ProductHasTags } from './product-has-tag.entity';
+import { ProductHasMedia } from './product-has-media.entity';
 
 @Injectable()
-export class ProductHasTagsQuery {
+export class ProductHasMediaQuery {
   constructor(
-    @InjectRepository(ProductHasTags)
-    private readonly productHasTagsRepo: Repository<ProductHasTags>,
+    @InjectRepository(ProductHasMedia)
+    private readonly productHasTagsRepo: Repository<Product>,
   ) {}
 
-  public find(where: SearchDto, relations = []): Promise<ProductHasTags[]> {
+  public find(where: SearchDto, relations = []): Promise<Product[]> {
     try {
       const search = Object.keys(where).reduce((acc, key) => {
         acc[key] = Like(`%${where[key]}%`);
@@ -30,7 +30,7 @@ export class ProductHasTagsQuery {
       throw new InternalServerErrorException();
     }
   }
-  public findOne(where, relations = []): Promise<ProductHasTags> {
+  public findOne(where, relations = []): Promise<Product> {
     try {
       return this.productHasTagsRepo.findOne({
         where: where,
@@ -42,7 +42,7 @@ export class ProductHasTagsQuery {
       throw new InternalServerErrorException();
     }
   }
-  public async upsert(body): Promise<ProductHasTags> {
+  public async upsert(body): Promise<Product> {
     try {
       let object = null;
       if (body.id) {
@@ -59,13 +59,13 @@ export class ProductHasTagsQuery {
     }
   }
 
-  // public async remove(id: number): Promise<Product> {
-  //   try {
-  //     return await this.productHasTagsRepo.softRemove({ id});
-  //   } catch (error) {
-  //     console.log(error);
-  //     if (error?.response?.statusCode !== 500) throw error;
-  //     throw new InternalServerErrorException();
-  //   }
-  // }
+  public async remove(id: number): Promise<Product> {
+    try {
+      return await this.productHasTagsRepo.softRemove({ id });
+    } catch (error) {
+      console.log(error);
+      if (error?.response?.statusCode !== 500) throw error;
+      throw new InternalServerErrorException();
+    }
+  }
 }

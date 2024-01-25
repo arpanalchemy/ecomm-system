@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsInt } from 'class-validator';
 
-export class CreateProductHasTagDto {
+export class CreateProductHasMediaDto {
   @ApiProperty()
   @IsInt()
   productId: number;
 
   @ApiProperty()
   @IsInt()
-  tagId: number;
+  mediaId: number;
 }

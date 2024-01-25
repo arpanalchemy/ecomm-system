@@ -23,6 +23,11 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   tags: string[];
 
   @ApiProperty()
+  // @IsArray()
+  @IsOptional()
+  media: string[];
+
+  @ApiProperty()
   @IsString()
   name: string;
 
@@ -43,6 +48,10 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   // @IsInt()
   @IsString()
   quantity: string;
+
+  @ApiProperty()
+  @IsString()
+  size: string;
 
   @ApiProperty()
   @IsString()

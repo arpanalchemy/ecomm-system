@@ -19,7 +19,7 @@ import { DatabaseProvider } from 'databse.provider';
 
 // import { AuthModule } from './auth/auth.module';
 import { ProductHasTagsModule } from './product-has-tags/product-has-tags.module';
-
+import { ProductHasMediaModule } from './product-has-media/product-has-media.module';
 
 @Module({
   imports: [
@@ -43,6 +43,7 @@ import { ProductHasTagsModule } from './product-has-tags/product-has-tags.module
     SocialsModule,
     VariantsModule,
     ProductHasTagsModule,
+    ProductHasMediaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
